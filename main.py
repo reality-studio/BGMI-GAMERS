@@ -10,6 +10,7 @@ intents = discord.Intents.default()
 intents.members = True
 
 bot = commands.Bot(command_prefix=commands.when_mentioned_or("!"),intents=intents)
+bot.remove_command('help')
 
 class Greetings(commands.Cog):
     def __init__(self, bot):
@@ -24,7 +25,7 @@ class Greetings(commands.Cog):
     @commands.Cog.listener()
     async def on_member_remove(self,member):
       ch = bot.get_channel(848793823106957343)
-      await ch.send("🥺 Bye {0.name}".format(member))
+      await ch.send("🥺 Bye **{0.name}**".format(member))
       
 bot.add_cog(Greetings(bot))
       
